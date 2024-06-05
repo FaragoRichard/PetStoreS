@@ -18,7 +18,7 @@ import static com.example.sandbox.util.constans.Tags.SMOKE;
 public class PetTest_Success extends Common {
 
     private PetBody petBody;
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
 
     @BeforeClass
     public void setUp() {
@@ -28,9 +28,9 @@ public class PetTest_Success extends Common {
         petBody.setId(Tools.generateRandomNumber());
         petBody.setName("Hydra");
         petBody.setStatus("available");
-        petBody.setTags(new ArrayList<Item>());
+        petBody.setTags(new ArrayList<>());
         petBody.setCategory(new Item());
-        petBody.setPhotoUrls(new ArrayList<String>());
+        petBody.setPhotoUrls(new ArrayList<>());
     }
 
     @Test(enabled = true, groups = {SMOKE}, description = "Create new pet", priority = 1)

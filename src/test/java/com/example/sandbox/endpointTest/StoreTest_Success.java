@@ -13,14 +13,15 @@ public class StoreTest_Success extends Common {
 
     @Test(enabled = true, groups = {SMOKE}, description = "Create new order")
     public void CreateOrder_Success_ValidData() {
-        String json = "{\n" +
-                "  \"id\": 1,\n" +
-                "  \"petId\": 1,\n" +
-                "  \"quantity\": 1,\n" +
-                "  \"shipDate\": \"2024-06-05T17:57:47.766Z\",\n" +
-                "  \"status\": \"placed\",\n" +
-                "  \"complete\": true\n" +
-                "}";
+        String json = """
+                {
+                  "id": 1,
+                  "petId": 1,
+                  "quantity": 1,
+                  "shipDate": "2024-06-05T17:57:47.766Z",
+                  "status": "placed",
+                  "complete": true
+                }""";
 
         Response response = postUrl(order, json);
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");

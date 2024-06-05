@@ -64,16 +64,17 @@ public class UserTest_Success extends Common {
         Map<String, String> pathParams = new TreeMap<>();
         pathParams.put("username", username);
 
-        userJson ="{\n" +
-                "  \"id\": 0,\n" +
-                "  \"username\": \"HydraSlayer\",\n" +
-                "  \"firstName\": \"asdasdasd\",\n" +
-                "  \"lastName\": \"asdasdasd\",\n" +
-                "  \"email\": \"asdasdasdasd\",\n" +
-                "  \"password\": \"asdasdasdasd\",\n" +
-                "  \"phone\": \"asdasdasda\",\n" +
-                "  \"userStatus\": 0\n" +
-                "}";
+        userJson = """
+                {
+                  "id": 0,
+                  "username": "HydraSlayer",
+                  "firstName": "asdasdasd",
+                  "lastName": "asdasdasd",
+                  "email": "asdasdasdasd",
+                  "password": "asdasdasdasd",
+                  "phone": "asdasdasda",
+                  "userStatus": 0
+                }""";
 
         Response response = putUrl(user, userJson, pathParams);
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
