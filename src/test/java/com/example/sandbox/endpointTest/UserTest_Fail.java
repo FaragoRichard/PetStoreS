@@ -1,15 +1,12 @@
 package com.example.sandbox.endpointTest;
 
 import com.example.sandbox.Common;
-import com.example.sandbox.util.Tools;
 import io.restassured.response.Response;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.UUID;
 
 import static com.example.sandbox.util.constans.Tags.SMOKE;
 

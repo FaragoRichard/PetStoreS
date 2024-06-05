@@ -2,7 +2,6 @@ package com.example.sandbox.endpointTest;
 
 import com.example.sandbox.Common;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
