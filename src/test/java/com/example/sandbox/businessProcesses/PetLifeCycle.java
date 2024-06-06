@@ -5,8 +5,10 @@ import com.example.sandbox.util.Tools;
 import com.example.sandbox.util.swagger.definitions.Item;
 import com.example.sandbox.util.swagger.definitions.PetBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -57,12 +59,22 @@ public class PetLifeCycle extends Common {
 
     @Test(enabled = true, groups = {SMOKE}, description = "Update pet info", priority = 3)
     public void UpdatePet() throws JsonProcessingException {
-        petBody.setName("Lernaean Hydra");
+        String newName = "Lernaean Hydra";
+        petBody.setName(newName);
         String json = mapper.writeValueAsString(petBody);
+        Map<String, String> pathParams = new TreeMap<>();
+        pathParams.put("petId", String.valueOf(petBody.getId()));
 
         Response response = putUrl(newPet, json);
 
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
+
+        // Verify updated pet
+        Response verifyUpdate = getUrlWithPath(petById, pathParams);
+        JsonNode jsonNode = mapper.readTree(verifyUpdate.getBody().asString());
+
+        Assert.assertEquals(verifyUpdate.getStatusCode(),200,"Invalid response code");
+        Assert.assertEquals(jsonNode.get("name").textValue(), newName,"Invalid response code");
     }
 
     @Test(enabled = true, groups = {SMOKE}, description = "Find pet by ID", priority = 4)
@@ -73,5 +85,9 @@ public class PetLifeCycle extends Common {
         Response response = deleteUrl(petById, pathParams);
 
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
+
+        // Verify delete pet
+        Response verifyUpdate = getUrlWithPath(petById, pathParams);
+        Assert.assertEquals(verifyUpdate.getStatusCode(),404,"Invalid response code");
     }
 }
