@@ -20,7 +20,7 @@ public class UserTest_Success extends Common {
     private String username;
     private String password;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setUp(){
         generatedId = Tools.generateRandomNumber();
         username = "HydraSlayer";

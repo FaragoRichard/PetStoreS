@@ -14,7 +14,7 @@ import static com.example.sandbox.util.constans.Tags.SMOKE;
 
 public class UserTest_Fail extends Common {
 
-    @BeforeTest
+    @BeforeTest(alwaysRun = true)
     public void userSetup(){
         Map<String, String> pathParams = new TreeMap<>();
         pathParams.put("username", "ThereIsAbsolutelyNoWayThisUserExists");

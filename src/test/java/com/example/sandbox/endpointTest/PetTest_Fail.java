@@ -23,7 +23,7 @@ public class PetTest_Fail extends Common {
     private PetBody petBody;
     private final ObjectMapper mapper = new ObjectMapper();
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setUp() {
 
         petBody = new PetBody();

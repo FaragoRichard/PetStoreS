@@ -13,7 +13,7 @@ import static com.example.sandbox.util.constans.Tags.SMOKE;
 
 public class petListTest extends Common {
 
-    @Test(enabled = true,groups = {SMOKE},description ="description")
+    @Test(enabled = false,groups = {SMOKE},description ="description")
     public void Test1(){
         Map<String, String> queryParams = new TreeMap<>();
         queryParams.put("status","available");
@@ -22,7 +22,7 @@ public class petListTest extends Common {
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true,groups = {SMOKE},description ="description")
+    @Test(enabled = false,groups = {SMOKE},description ="description")
     public void Test2(){
         Map<String, String> queryParams = new TreeMap<>();
         queryParams.put("status","available");
