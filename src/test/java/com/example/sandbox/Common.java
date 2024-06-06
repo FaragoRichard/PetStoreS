@@ -110,22 +110,6 @@ public class Common extends Endpoints {
 
     }
 
-    public Response putUrl(String endpoint, String body, Map<String, String> pathParams ){
-        return given()
-                .relaxedHTTPSValidation()
-                .pathParams(pathParams)
-                .contentType("application/json")
-                .body(body)
-                .and()
-                .log().everything()
-                .when()
-                .put(baseUrl+endpoint)
-                .then()
-                .log()
-                .all()
-                .extract().response();
-    }
-
     public Response postUrl(String endpoint, Map<String, String> formParams, Map<String, String> pathParams ){
 
 
@@ -167,6 +151,52 @@ public class Common extends Endpoints {
 
     //----------------------------------PUT----------------------------------
 
+    public Response putUrl(String endpoint, String body, Map<String, String> pathParams ){
+        return given()
+                .relaxedHTTPSValidation()
+                .pathParams(pathParams)
+                .contentType("application/json")
+                .body(body)
+                .and()
+                .log().everything()
+                .when()
+                .put(baseUrl+endpoint)
+                .then()
+                .log()
+                .all()
+                .extract().response();
+    }
+
+    public Response putUrl(String endpoint, String body){
+        return given()
+                .relaxedHTTPSValidation()
+                .contentType("application/json")
+                .body(body)
+                .and()
+                .log().everything()
+                .when()
+                .put(baseUrl+endpoint)
+                .then()
+                .log()
+                .all()
+                .extract().response();
+    }
+
     //----------------------------------DELETE----------------------------------
+
+    public Response deleteUrl(String endpoint, Map<String, String> pathParams ){
+        return given()
+                .relaxedHTTPSValidation()
+                .pathParams(pathParams)
+                .contentType("application/json")
+                .and()
+                .log().everything()
+                .when()
+                .delete(baseUrl+endpoint)
+                .then()
+                .log()
+                .all()
+                .extract().response();
+    }
 }
 
