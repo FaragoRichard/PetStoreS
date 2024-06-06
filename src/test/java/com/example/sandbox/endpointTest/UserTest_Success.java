@@ -38,19 +38,19 @@ public class UserTest_Success extends Common {
                 "]";
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new pet", priority = 1)
+    @Test(enabled = true, groups = {SMOKE}, description = "Create new user with list", priority = 1)
     public void CreateUsersList_Success_ValidData(){
         Response response = postUrl(createWithList, userJson);
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new pet", priority = 1)
+    @Test(enabled = true, groups = {SMOKE}, description = "Create new user with array", priority = 1)
     public void CreateUsersArray_Success_ValidData(){
         Response response = postUrl(createWithArray, userJson);
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new pet", priority = 2)
+    @Test(enabled = true, groups = {SMOKE}, description = "Get user by name", priority = 2)
     public void GetUserByName_Success_ValidUsername(){
         Map<String, String> pathParams = new TreeMap<>();
         pathParams.put("username", username);
@@ -59,7 +59,7 @@ public class UserTest_Success extends Common {
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new pet", priority = 3)
+    @Test(enabled = true, groups = {SMOKE}, description = "Update username", priority = 3)
     public void UpdateUserByName_Success_ValidUsername(){
         Map<String, String> pathParams = new TreeMap<>();
         pathParams.put("username", username);
@@ -80,7 +80,7 @@ public class UserTest_Success extends Common {
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new pet", priority = 3)
+    @Test(enabled = true, groups = {SMOKE}, description = "Login User", priority = 3)
     public void LoginUser_Success_ValidData(){
         Map<String, String> queryParams = new TreeMap<>();
         queryParams.put("username", username);
@@ -90,7 +90,7 @@ public class UserTest_Success extends Common {
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new pet", priority = 4)
+    @Test(enabled = true, groups = {SMOKE}, description = "Logout User", priority = 4)
     public void LogoutUser_Success_ValidData(){
         Response response = getUrl(logout);
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");

@@ -27,7 +27,7 @@ public class StoreTest_Success extends Common {
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new order")
+    @Test(enabled = true, groups = {SMOKE}, description = "Get inventory")
     public void GetInventory_Success_ValidData() throws JsonProcessingException {
         Response response = getUrl(inventory);
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");

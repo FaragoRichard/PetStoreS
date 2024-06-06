@@ -12,7 +12,7 @@ import static com.example.sandbox.util.constans.Tags.SMOKE;
 
 public class UserTest_Fail extends Common {
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new pet", priority = 2)
+    @Test(enabled = true, groups = {SMOKE}, description = "Get user by name", priority = 2)
     public void GetUserByName_Fail_NonExistentUsername(){
         Map<String, String> pathParams = new TreeMap<>();
         pathParams.put("username", "ThereIsAbsolutelyNoWayThisUserExists");
@@ -28,7 +28,7 @@ public class UserTest_Fail extends Common {
         Assert.assertEquals(response2.getStatusCode(),404, "Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new pet", priority = 2)
+    @Test(enabled = true, groups = {SMOKE}, description = "Login user", priority = 2)
     public void LoginUser_Fail_InvalidData(){
         Map<String, String> pathParams = new TreeMap<>();
         pathParams.put("username", "ThereIsAbsolutelyNoWayThisUserExists");
