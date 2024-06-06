@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static com.example.sandbox.util.constans.Tags.REGRESSION;
 import static com.example.sandbox.util.constans.Tags.SMOKE;
 
 public class PetTest_Fail extends Common {
@@ -35,7 +36,7 @@ public class PetTest_Fail extends Common {
         petBody.setPhotoUrls(new ArrayList<>());
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new pet")
+    @Test(enabled = true, groups = {REGRESSION}, description = "Create new pet")
     public void CreatePet_Fail_InvalidID() throws JsonProcessingException {
         String invalidJson = "{\n" +
                 "  \"id\": asdasdasdasd,\n" + // Id should be invalid
@@ -56,7 +57,7 @@ public class PetTest_Fail extends Common {
         Assert.assertEquals(response.getStatusCode(),400,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new pet")
+    @Test(enabled = true, groups = {REGRESSION}, description = "Create new pet")
     public void CreatePet_Fail_InvalidData() throws JsonProcessingException {
         String invalidJson = "{\n" +
                 "  \"id\": 0,\n" +
@@ -83,7 +84,7 @@ public class PetTest_Fail extends Common {
         Assert.assertEquals(response.getStatusCode(),405,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Find pet by ID")
+    @Test(enabled = true, groups = {REGRESSION}, description = "Find pet by ID")
     public void GetPetByID_Fail_InvalidID() {
         Map<String, String> pathParams = new TreeMap<>();
         pathParams.put("petId", "asdasdasd");
@@ -94,7 +95,7 @@ public class PetTest_Fail extends Common {
         Assert.assertEquals(response.getStatusCode(),400,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Find pet by Status")
+    @Test(enabled = true, groups = {REGRESSION}, description = "Find pet by Status")
     public void GetPetsByStatus_Fail_InvalidStatus() {
         Map<String, String> queryParams = new TreeMap<>();
         queryParams.put("status","dead");
@@ -105,7 +106,7 @@ public class PetTest_Fail extends Common {
         Assert.assertEquals(response.getStatusCode(),400,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Update pet info", priority = 3)
+    @Test(enabled = true, groups = {REGRESSION}, description = "Update pet info", priority = 3)
     public void UpdatePet_Fail_InvalidData() throws JsonProcessingException {
         String json = mapper.writeValueAsString(petBody);
 

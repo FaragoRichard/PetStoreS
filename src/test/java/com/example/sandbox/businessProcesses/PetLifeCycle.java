@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static com.example.sandbox.util.constans.Tags.REGRESSION;
 import static com.example.sandbox.util.constans.Tags.SMOKE;
 
 //import static com.example.sandbox.util.body.pet.JsonBody.createJsonBody;
@@ -38,7 +39,7 @@ public class PetLifeCycle extends Common {
         petBody.setPhotoUrls(new ArrayList<>());
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new pet", priority = 1)
+    @Test(enabled = true, groups = {SMOKE, REGRESSION}, description = "Create new pet", priority = 1)
     public void CreatePet() throws JsonProcessingException {
         String json = mapper.writeValueAsString(petBody);
 
@@ -47,7 +48,7 @@ public class PetLifeCycle extends Common {
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Find pet by ID", priority = 2)
+    @Test(enabled = true, groups = {SMOKE, REGRESSION}, description = "Find pet by ID", priority = 2)
     public void GetPetByID() {
         Map<String, String> pathParams = new TreeMap<>();
         pathParams.put("petId", String.valueOf(petBody.getId()));
@@ -57,7 +58,7 @@ public class PetLifeCycle extends Common {
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Update pet info", priority = 3)
+    @Test(enabled = true, groups = {SMOKE, REGRESSION}, description = "Update pet info", priority = 3)
     public void UpdatePet() throws JsonProcessingException {
         String newName = "Lernaean Hydra";
         petBody.setName(newName);
@@ -77,7 +78,7 @@ public class PetLifeCycle extends Common {
         Assert.assertEquals(jsonNode.get("name").textValue(), newName,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Find pet by ID", priority = 4)
+    @Test(enabled = true, groups = {SMOKE, REGRESSION}, description = "Find pet by ID", priority = 4)
     public void DeletePetByID() {
         Map<String, String> pathParams = new TreeMap<>();
         pathParams.put("petId", String.valueOf(petBody.getId()));

@@ -6,12 +6,13 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.example.sandbox.util.constans.Tags.REGRESSION;
 import static com.example.sandbox.util.constans.Tags.SMOKE;
 
 public class StoreTest_Success extends Common {
     //private ObjectMapper mapper = new ObjectMapper();
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new order")
+    @Test(enabled = true, groups = {SMOKE, REGRESSION}, description = "Create new order")
     public void CreateOrder_Success_ValidData() {
         String json = """
                 {
@@ -27,7 +28,7 @@ public class StoreTest_Success extends Common {
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Get inventory")
+    @Test(enabled = true, groups = {REGRESSION}, description = "Get inventory")
     public void GetInventory_Success_ValidData() throws JsonProcessingException {
         Response response = getUrl(inventory);
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");

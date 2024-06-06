@@ -5,12 +5,13 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.example.sandbox.util.constans.Tags.REGRESSION;
 import static com.example.sandbox.util.constans.Tags.SMOKE;
 
 public class StoreTest_Fail extends Common {
     //private ObjectMapper mapper = new ObjectMapper();
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new order")
+    @Test(enabled = true, groups = {REGRESSION}, description = "Create new order")
     public void CreateOrder_Fail_InvalidId() {
         String json = "{\n" +
                 "  \"id\": asdasda,\n" + // Id should be invalid

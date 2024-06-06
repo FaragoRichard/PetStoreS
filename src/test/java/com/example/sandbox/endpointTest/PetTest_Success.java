@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 
 import java.util.*;
 
+import static com.example.sandbox.util.constans.Tags.REGRESSION;
 import static com.example.sandbox.util.constans.Tags.SMOKE;
 
 public class PetTest_Success extends Common {
@@ -33,7 +34,7 @@ public class PetTest_Success extends Common {
         petBody.setPhotoUrls(new ArrayList<>());
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Create new pet", priority = 1)
+    @Test(enabled = true, groups = {SMOKE, REGRESSION}, description = "Create new pet", priority = 1)
     public void CreatePet_Success_ValidData() throws JsonProcessingException {
         String json = mapper.writeValueAsString(petBody);
 
@@ -42,7 +43,7 @@ public class PetTest_Success extends Common {
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Find pet by ID", priority = 2)
+    @Test(enabled = true, groups = {SMOKE, REGRESSION}, description = "Find pet by ID", priority = 2)
     public void GetPetByID_Success_ValidID() {
         Map<String, String> pathParams = new TreeMap<>();
         pathParams.put("petId", String.valueOf(petBody.getId()));
@@ -52,7 +53,7 @@ public class PetTest_Success extends Common {
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Find pet by Status", priority = 2)
+    @Test(enabled = true, groups = {SMOKE, REGRESSION}, description = "Find pet by Status", priority = 2)
     public void GetPetsByStatus_Success_ValidStatus() {
         Map<String, String> queryParams = new TreeMap<>();
         queryParams.put("status","available");
@@ -62,7 +63,7 @@ public class PetTest_Success extends Common {
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Update pet info", priority = 3)
+    @Test(enabled = true, groups = {SMOKE, REGRESSION}, description = "Update pet info", priority = 3)
     public void UpdatePet_Success_ValidIDAndData() {
         Map<String, String> pathParams = new TreeMap<>();
         Map<String, String> formParams = new TreeMap<>();
@@ -76,8 +77,7 @@ public class PetTest_Success extends Common {
         Assert.assertEquals(response.getStatusCode(),200,"Invalid response code");
     }
 
-
-    @Test(enabled = true, groups = {SMOKE}, description = "Upload image for existing pet", priority = 4)
+    @Test(enabled = true, groups = {SMOKE, REGRESSION}, description = "Upload image for existing pet", priority = 4)
     public void UploadPetImage_Success_ValidIDAndImage() {
         Map<String, String> pathParams = new TreeMap<>();
         pathParams.put("petId", String.valueOf(petBody.getId()));

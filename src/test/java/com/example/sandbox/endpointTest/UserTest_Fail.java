@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static com.example.sandbox.util.constans.Tags.REGRESSION;
 import static com.example.sandbox.util.constans.Tags.SMOKE;
 
 public class UserTest_Fail extends Common {
@@ -21,7 +22,7 @@ public class UserTest_Fail extends Common {
         Response response = getUrlWithPath(user, pathParams);
         Assert.assertEquals(response.getStatusCode(),404,"Invalid response code");
     }
-    @Test(enabled = true, groups = {SMOKE}, description = "Get user by name", priority = 2)
+    @Test(enabled = true, groups = {REGRESSION}, description = "Get user by name", priority = 2)
     public void GetUserByName_Fail_NonExistentUsername(){
         Map<String, String> pathParams = new TreeMap<>();
         pathParams.put("username", "ThereIsAbsolutelyNoWayThisUserExists");
@@ -31,7 +32,7 @@ public class UserTest_Fail extends Common {
         Assert.assertEquals(response.getStatusCode(),404, "Invalid response code");
     }
 
-    @Test(enabled = true, groups = {SMOKE}, description = "Login user", priority = 2)
+    @Test(enabled = true, groups = {REGRESSION}, description = "Login user", priority = 2)
     public void LoginUser_Fail_InvalidData(){
         Map<String, String> queryParams = new TreeMap<>();
         queryParams.put("username", "ThereIsAbsolutelyNoWayThisUserExists");
