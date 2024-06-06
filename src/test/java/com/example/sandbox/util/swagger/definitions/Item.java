@@ -10,6 +10,8 @@ import lombok.experimental.SuperBuilder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Item {
 
+    public Item(){}
+
     @JsonProperty
     private int id;
 
