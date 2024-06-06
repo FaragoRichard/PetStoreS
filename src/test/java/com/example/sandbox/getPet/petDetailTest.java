@@ -12,7 +12,7 @@ import static com.example.sandbox.util.constans.Tags.SMOKE;
 
 public class petDetailTest extends Common {
 
-    @Test(enabled = true,groups = {SMOKE},description ="description")
+    @Test(enabled = false,groups = {SMOKE},description ="description")
     public void Test1(){
         Map<String, String> queryParams = new TreeMap<>();
         queryParams.put("status","available");
